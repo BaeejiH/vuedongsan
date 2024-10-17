@@ -1,5 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+  vue.js로 만드는 부동산 프로젝트
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
