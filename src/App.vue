@@ -1,5 +1,18 @@
 <template>
  
+ <!--동적UI 만드는법
+    1. UI 현재 상태를 데이터로 저장
+    2. 데이터에 따라 UI가 어떻게 보일지 작성 -->
+<div class="black-bg" v-if="모달창현재상태 == ture">
+  <div class="white-bg">
+    <h4>상세페이지임</h4>
+    <p>상세페이지 내용</p>
+  <button @click="모달창현재상태 = false">닫기</button>
+  </div>
+</div>
+
+
+
 <div class="menu">
   <a v-for="a in 메뉴들" :key="a">{{a}}</a> 
   <!-- 
@@ -42,7 +55,7 @@
 
 
   <div>
-    <h2> {{products[0]}}원룸</h2>
+    <h2 @click="모달창현재상태 = ture"> {{products[0]}}원룸</h2>
     <img src="./assets/W2.jpg" class="W-img">
     <p>5만원</p>
     <button @mouseover="increase">허위매물신고</button> <span>신고수 : {{신고수[0]}}</span>
@@ -75,6 +88,7 @@ export default {
       //여기에 모든 데이터 저장해둬야 함
       //데이터는 odject 자료로 저장
       //데이터를 위에다 넣어줄 수 있음
+      모달창현재상태: false,  
       신고수 : [0,0,0],
       메뉴들 : ['Home','shop','About'],
       원룸들 : ['금천구','시흥동','마포구'],
@@ -128,7 +142,22 @@ export default {
   width: 30%;
   margin-top: 40px;
 }
-
+body{
+  margin: 0
+}
+div{
+  box-sizing: border-box;
+}
+.black-bg{
+  width: 100%; height: 100%;
+  background: rgb(0,0,0,0.5);
+  position: fixed; padding: 20px;
+}
+.white-bg {
+  width: 100%; background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
 </style>
 
 
