@@ -25,15 +25,47 @@
     <h2 :style="스타이이일">{{products[2]}} 원룸</h2>
     <p>1000만원</p>
   </div>
-
+<hr>
   <div>
     <a v-for="a1 in 원룸들" :key="a1" style="display:block;">{{a1}}</a>
   </div>
+<!--
+  div에 그냥 v-for 넣어서 반복문 쓰면 아래와 같이도 구현가능 
+  a는 products안에 있는 데이터가 되고, i는 반복되는 횟수를 나타냄
+ -->
+  <div v-for="(a,i) in 3" :key="i">
+    <h2>{{products[i]}}</h2>
+    <p>50만원</p>
+  </div>
+<hr>
+<!--이벤트 핸들러 -->
+
+
+  <div>
+    <h2> {{products[0]}}원룸</h2>
+    <img src="./assets/W2.jpg" class="W-img">
+    <p>5만원</p>
+    <button @mouseover="increase">허위매물신고</button> <span>신고수 : {{신고수[0]}}</span>
+  </div>
+
+  <div>
+    <h2>{{products[1]}} 원룸</h2>
+    <img src="./assets/W3.jpg" class="W-img">
+    <p>7만원</p>
+    <button @click="decrease">허위매물신고</button> <span>신고수 : {{신고수[1]}}</span>
+  </div>
+
+  <div>
+    <h2>{{products[2]}} 원룸</h2>
+     <img src="./assets/W4.webp" class="W-img">
+    <p>10만원</p>
+    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
+  </div>
+
 </template>
 
 <script>
-
-
+//함수를 쓰는 이유는 긴 코드를 짧은 코드로 요약하기 위해
 
 export default {
   name: 'App',
@@ -43,6 +75,7 @@ export default {
       //여기에 모든 데이터 저장해둬야 함
       //데이터는 odject 자료로 저장
       //데이터를 위에다 넣어줄 수 있음
+      신고수 : [0,0,0],
       메뉴들 : ['Home','shop','About'],
       원룸들 : ['금천구','시흥동','마포구'],
       pricel1 : 5000,
@@ -53,6 +86,19 @@ export default {
       스타이이일 : 'color : purple',
       products : ['역상동 원룸','천호동원룸','마포구원룸']
     }
+  },
+  methods: {
+    //data에 있는 신고수를 가져다 쓰고 싶으면 앞에 this.을 붙여줘야 가져와서 쓸 수 있음.
+    increase(){
+      this.신고수[0] ++;
+    },
+    decrease(){
+      this.신고수[1]--;
+    },
+     decrease1(){
+      this.신고수[2]--;
+    }
+
   },
   components: {
   }
@@ -78,6 +124,11 @@ export default {
   color:white;
   padding: 10px;
 }
+.W-img{
+  width: 30%;
+  margin-top: 40px;
+}
+
 </style>
 
 
