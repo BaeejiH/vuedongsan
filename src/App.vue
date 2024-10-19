@@ -69,15 +69,18 @@
   </div>
 
   <div>
-    <h2>{{products[2]}} 원룸</h2>
+    <h2>{{상품목록[0].title}}</h2>
      <img src="./assets/W4.webp" class="W-img">
-    <p>10만원</p>
+    <p>{{상품목록[0].price}}억</p>
     <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
   </div>
 
 </template>
 
 <script>
+
+import data from './assets/data.js';
+
 //함수를 쓰는 이유는 긴 코드를 짧은 코드로 요약하기 위해
 
 export default {
@@ -88,6 +91,7 @@ export default {
       //여기에 모든 데이터 저장해둬야 함
       //데이터는 odject 자료로 저장
       //데이터를 위에다 넣어줄 수 있음
+      상품목록: data,
       모달창현재상태: false,  
       신고수 : [0,0,0],
       메뉴들 : ['Home','shop','About'],
@@ -98,7 +102,7 @@ export default {
       스타일 : 'color : red',
       스타이일 : 'color : blue',
       스타이이일 : 'color : purple',
-      products : ['역상동 원룸','천호동원룸','마포구원룸']
+      products : ['역삼동','천호동','마포구']
     }
   },
   methods: {
