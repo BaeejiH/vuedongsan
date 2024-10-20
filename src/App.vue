@@ -74,12 +74,38 @@
     <p>{{상품목록[0].price}}억</p>
     <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
   </div>
+  <hr>
+
+   <div>
+    <h2>{{마켓[0].title}}</h2>
+     <img src="./assets/home1.jpeg" class="W-img">
+    <p>{{마켓[0].price}}억</p>
+    <p>{{마켓[0].content}}</p>
+    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
+  </div>
+
+   <div>
+    <h2>{{마켓[1].title}}</h2>
+     <img src="./assets/home1.jpeg" class="W-img">
+    <p>{{마켓[1].price}}억</p>
+    <p>{{마켓[1].content}}</p>
+    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
+  </div>
+
+   <div>
+    <h2>{{마켓[2].title}}</h2>
+     <img src="./assets/home1.jpeg" class="W-img">
+    <p>{{마켓[2].price}}억</p>
+    <p>{{마켓[2].content}}</p>
+    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
+  </div>
 
 </template>
 
 <script>
 
 import data from './assets/data.js';
+import market from './assets/market.js';
 
 //함수를 쓰는 이유는 긴 코드를 짧은 코드로 요약하기 위해
 
@@ -91,6 +117,7 @@ export default {
       //여기에 모든 데이터 저장해둬야 함
       //데이터는 odject 자료로 저장
       //데이터를 위에다 넣어줄 수 있음
+      마켓: market,
       상품목록: data,
       모달창현재상태: false,  
       신고수 : [0,0,0],
