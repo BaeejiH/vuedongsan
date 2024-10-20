@@ -76,27 +76,11 @@
   </div>
   <hr>
 
-   <div>
-    <h2>{{마켓[0].title}}</h2>
+   <div v-for="(a,i) in 3" :key="i">
+    <h2>{{마켓[i].title}}</h2>
      <img src="./assets/home1.jpeg" class="W-img">
-    <p>{{마켓[0].price}}억</p>
-    <p>{{마켓[0].content}}</p>
-    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
-  </div>
-
-   <div>
-    <h2>{{마켓[1].title}}</h2>
-     <img src="./assets/home1.jpeg" class="W-img">
-    <p>{{마켓[1].price}}억</p>
-    <p>{{마켓[1].content}}</p>
-    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
-  </div>
-
-   <div>
-    <h2>{{마켓[2].title}}</h2>
-     <img src="./assets/home1.jpeg" class="W-img">
-    <p>{{마켓[2].price}}억</p>
-    <p>{{마켓[2].content}}</p>
+    <p>{{마켓[i].price}}억</p>
+    <p>{{마켓[i].content}}</p>
     <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
   </div>
 
