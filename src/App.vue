@@ -7,6 +7,13 @@
 <div v-else>
   Hi 2
 </div>
+
+<!-- component문법
+1. vue파일을 improt해오고 
+2. components에 등록하고
+3. 가져다 쓰기
++ component의 이름은 2단어 이상으로 작명해야함. ex) dis로 작명시 에러발생.
+-->
  
  <!--동적UI 만드는법
     1. UI 현재 상태를 데이터로 저장
@@ -15,12 +22,12 @@
   <div class="white-bg">
     <h4>{{마켓[사용자누름].title}}</h4>
     <p>{{마켓[사용자누름].content}}</p>
-    <p>{{마켓[사용자누름].price}}</p>
+    <p>{{마켓[사용자누름].price}}억</p>
   <button @click="모달창현재상태 = false">닫기</button>
   </div>
 </div>
 
-
+<DisCountBanner/>
 
 <div class="menu">
   <a v-for="a in 메뉴들" :key="a">{{a}}</a> 
@@ -99,6 +106,7 @@
 
 import data from './assets/data.js';
 import market from './assets/market.js';
+import DisCountBanner from './DisCountBanner.vue';
 
 //함수를 쓰는 이유는 긴 코드를 짧은 코드로 요약하기 위해
 
@@ -140,6 +148,7 @@ export default {
 
   },
   components: {
+    DisCountBanner : DisCountBanner, // ket,value형식으로 위에서 import한것을 가져옴. 왼쪽 변수는 자유 작명가능. 왼쪽과 오른쪽이 같다면 DisCountBanner, <--이렇게도 가능
   }
 }
 </script>
@@ -182,6 +191,12 @@ div{
   width: 100%; background: white;
   border-radius: 8px;
   padding: 20px;
+}
+.DisCountBanner{
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 </style>
 

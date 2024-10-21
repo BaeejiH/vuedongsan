@@ -1,0 +1,20 @@
+<template>
+  <div class="black-bg" v-if="모달창현재상태 == true">
+  <div class="white-bg">
+    <h4>{{마켓[사용자누름].title}}</h4>
+    <p>{{마켓[사용자누름].content}}</p>
+    <p>{{마켓[사용자누름].price}}억</p>
+  <button @click="모달창현재상태 = false">닫기</button>
+  </div>
+</div>
+</template>
+
+<script>
+export default {
+    name : 'Modal'
+}
+</script>
+
+<style>
+
+</style>
