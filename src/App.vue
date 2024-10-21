@@ -1,4 +1,16 @@
 <template>
+
+<!-- props(자식에게 데이터 보내는 법)
+1. 데이터 보내고
+2. 등록하고 
+3. 가져다 쓰기
++ ex) <자식:데이터="데이터">
++ :  == v-bind랑 똑같음
+-->
+
+<ModalBanner :마켓="마켓" :사용자누름="사용자누름" :모달창현재상태="모달창현재상태"/>
+
+
 <!-- v-else-if (if문을 연달아 쓰고 싶을 때)-->
 <div v-if="1 == 2">
   Hi
@@ -18,14 +30,7 @@
  <!--동적UI 만드는법
     1. UI 현재 상태를 데이터로 저장
     2. 데이터에 따라 UI가 어떻게 보일지 작성 -->
-<div class="black-bg" v-if="모달창현재상태 == true">
-  <div class="white-bg">
-    <h4>{{마켓[사용자누름].title}}</h4>
-    <p>{{마켓[사용자누름].content}}</p>
-    <p>{{마켓[사용자누름].price}}억</p>
-  <button @click="모달창현재상태 = false">닫기</button>
-  </div>
-</div>
+
 
 <DisCountBanner/>
 
@@ -92,13 +97,8 @@
   </div>
   <hr>
 
-   <div v-for="(a,i) in 3" :key="i">
-    <h2 @click="모달창현재상태 = true; 사용자누름 = i;">{{마켓[i].title}}</h2>
-     <img src="./assets/home1.jpeg" class="W-img">
-    <p>{{마켓[i].price}}억</p>
-    <p>{{마켓[i].content}}</p>
-    <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
-  </div>
+<CardList :원룸들="원룸들" :price="price" v-for="a in 3" :key="a"/>
+
 
 </template>
 
@@ -107,6 +107,8 @@
 import data from './assets/data.js';
 import market from './assets/market.js';
 import DisCountBanner from './DisCountBanner.vue';
+import ModalBanner from './ModalBanner.vue';
+import CardList from './CardList.vue';
 
 //함수를 쓰는 이유는 긴 코드를 짧은 코드로 요약하기 위해
 
@@ -127,6 +129,7 @@ export default {
       원룸들 : ['금천구','시흥동','마포구'],
       pricel1 : 5000,
       pricel2 : 7000,
+      price : [3000,4000,5000],
       rogo : '원룸',
       스타일 : 'color : red',
       스타이일 : 'color : blue',
@@ -149,6 +152,8 @@ export default {
   },
   components: {
     DisCountBanner : DisCountBanner, // ket,value형식으로 위에서 import한것을 가져옴. 왼쪽 변수는 자유 작명가능. 왼쪽과 오른쪽이 같다면 DisCountBanner, <--이렇게도 가능
+    ModalBanner : ModalBanner,
+    CardList : CardList,
   }
 }
 </script>
