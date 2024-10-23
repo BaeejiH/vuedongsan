@@ -97,7 +97,9 @@
   </div>
   <hr>
 
-<CardList :원룸들="원룸들" :price="price" v-for="a in 3" :key="a"/>
+<CardList :원룸들="원룸들[0]" :price="price[0]"/>
+<CardList :원룸들="원룸들[1]" :price="price[1]"/>
+<CardList :원룸들="원룸들[2]" :price="price[2]"/>
 
 
 </template>
