@@ -13,7 +13,7 @@
     -무조건 숫자로 나태내고 싶다면 .number을 붙여줘야함
     -->
     <input v-model.number="month">  
-    <p>{{month}}개월 선택함:{{마켓[사용자누름].price+month}}억</p>
+    <p>{{month}}개월 선택함:{{마켓[사용자누름].price*month}}억</p>
   <button @click="$emit('closeModal')">닫기</button>
   <!-- 닫기버튼이 안열리는오류 문제(Type Error) = closeModal에 ''를 넣지 않고 부모에게 데이터를 보냄.  
   -->
@@ -27,6 +27,17 @@ export default {
     data(){
       return{
         month : 1,// 초기값의 type이 매우 중요함.
+      }
+    },
+    // watch : {감시하 데이터(){}}
+    // 문자를 입력했을때 경고창 + 개월수 다시1로 되돌리기
+    // isNaN = 자바스크립트에서 어떠한 값이 숫자가 아닌지 여부를 판별하는 함수
+    watch : {
+      month(a){
+        if (typeof a === 'string' && isNaN(a)){
+          alert('문자는 입력할 수 없습니다')
+          this.month = 1;
+        }
       }
     },
     props : {
