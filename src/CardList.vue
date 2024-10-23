@@ -8,7 +8,7 @@
   <div>
     <img :src="마켓.image" class="W-img">
     <h2 @click="$emit('openModal',마켓.id)">{{마켓.title}}</h2>
-    <p>{{마켓.price}}</p>
+    <p>{{마켓.price}}억</p>
     <p>{{마켓.content}} </p>
   </div>
 </template>
