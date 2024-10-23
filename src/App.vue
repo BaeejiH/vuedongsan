@@ -8,7 +8,12 @@
 + :  == v-bind랑 똑같음
 -->
 
-<ModalBanner :마켓="마켓" :사용자누름="사용자누름" :모달창현재상태="모달창현재상태"/>
+<ModalBanner 
+  @closeModal="모달창현재상태 =false;"
+  :마켓="마켓" 
+  :사용자누름="사용자누름" 
+  :모달창현재상태="모달창현재상태"
+/>
 
 
 <!-- v-else-if (if문을 연달아 쓰고 싶을 때)-->
@@ -95,12 +100,21 @@
     <p>{{상품목록[0].price}}억</p>
     <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
   </div>
-  <hr>
 
-<CardList :원룸들="원룸들[0]" :price="price[0]"/>
-<CardList :원룸들="원룸들[1]" :price="price[1]"/>
-<CardList :원룸들="원룸들[2]" :price="price[2]"/>
+<hr>
+ <CardList 
+  @openModal="모달창현재상태 = true; 사용자누름 = $event"
+  :마켓="마켓[i]" v-for="(a,i) in 마켓" :key="a"
+ />
 
+  <!-- 자식 컴포넌트가 부모데이터를 변경할수 없음으로 메세지를 전송하는 방법으로 변경 $emit() -->
+
+<!-- props를 보내는 여러가지 방법
+  <CardList :데이터이름="[1,2,3]"/> Array
+  <CardList :데이터이름="{age:20}"/> Object머
+  <CardList :데이터이름="100"/> 숫자
+  <CardList :데이터이름="안녕하세요"/> 문자
+ -->
 
 </template>
 
