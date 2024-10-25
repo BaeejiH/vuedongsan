@@ -44,7 +44,13 @@ export default {
       마켓 : Array,
       사용자누름:Number,
       모달창현재상태:Boolean,
+    },
+    
+     beforeUpdate() {
+    if(this.month == 5){
+      alert('5개월은 너무 애매함')
     }
+  },
 }
 </script>
 
