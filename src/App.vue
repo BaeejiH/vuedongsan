@@ -104,7 +104,13 @@ transition으로 애니메이션을 주기위에서 style의 3가지 코드를 �
     <button @click="decrease1">허위매물신고</button> <span>신고수 : {{신고수[2]}}</span>
   </div>
 
+
+
 <hr>
+<button @click="priceSort">가격높은순정렬</button>
+<button @click="sortBack">되돌리기</button>
+<button @click="lowSort">가격낮은순정렬</button>
+<button @click="koreaSort">가나다순정렬</button>
  <CardList 
   @openModal="모달창현재상태 = true; 사용자누름 = $event"
   :마켓="마켓[i]" v-for="(a,i) in 마켓" :key="a"
@@ -139,6 +145,7 @@ export default {
       //여기에 모든 데이터 저장해둬야 함
       //데이터는 odject 자료로 저장
       //데이터를 위에다 넣어줄 수 있음
+      마켓오리지널 : [...market], // 같은 array를 별개로 저장하고 싶으면  ...으로 저장해야함
       사용자누름 : 0, // 사용자가 누른 번호가 모달창에 뜰 수 있도록
       마켓: market,
       상품목록: data,
@@ -166,7 +173,26 @@ export default {
     },
      decrease1(){
       this.신고수[2]--;
-    }
+    },
+    priceSort(){ // 숫자들을 정렬하고 싶을 때 .sort()  , 
+      this.마켓.sort(function(a,b){
+        return  b.price-a.price 
+      })
+    },
+    sortBack(){
+      // this.마켓 = this.마켓오리지널; // array 자료는 =로 연결하면 값을 공유해주는 역할만함.
+      this.마켓 = [...this.마켓오리지널]; 
+    },
+    lowSort(){
+      this.마켓.sort(function(a,b){
+        return a.price -b.price
+      })
+    },
+    koreaSort(){
+      this.마켓.sort(function(a,b){
+          return a.title.localeCompare(b.title,'ko');
+        })
+    },
 
   },
   components: {

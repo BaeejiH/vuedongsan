@@ -3,7 +3,7 @@ export default[{
     image : "https://codingapple1.github.io/vue/room0.jpg",
     title : "한강이 보이는 뷰 아파트",
     content : "풀옵션",
-    price : 50,
+    price : 500,
 
 },
 {
