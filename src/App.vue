@@ -7,14 +7,17 @@
 + ex) <자식:데이터="데이터">
 + :  == v-bind랑 똑같음
 -->
-
+<!-- <div class="start" :class="{end : 모달창현재상태}"> <-- transition을 쓰지 않고 애니메이션을 적용하려할 때
+transition으로 애니메이션을 주기위에서 style의 3가지 코드를 필요로함.
+-->
+<transition name="fade">
 <ModalBanner 
   @closeModal="모달창현재상태 =false;"
   :마켓="마켓" 
-  :사용자누름="사용자누름" 
+  :사용자누름="사용자누름"  
   :모달창현재상태="모달창현재상태"
 />
-
+</transition>
 
 <!-- v-else-if (if문을 연달아 쓰고 싶을 때)-->
 <div v-if="1 == 2">
@@ -175,6 +178,17 @@ export default {
 </script>
 
 <style>
+.fade-enter-from{
+  opacity: 0;
+} 
+.fade-enter-active{
+  transition: all 1s;
+}
+.fade-enter-to{
+  opacity: 1;
+}
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
